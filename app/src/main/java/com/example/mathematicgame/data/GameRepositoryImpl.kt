@@ -1,9 +1,9 @@
 package com.example.mathematicgame.data
 
+import com.example.mathematicgame.domain.entities.Level
 import com.example.mathematicgame.domain.repository.GameRepository
-import com.example.mathgame.domain.entities.GameSettings
-import com.example.mathgame.domain.entities.Level
-import com.example.mathgame.domain.entities.Question
+import com.example.mathematicgame.domain.entities.GameSettings
+import com.example.mathematicgame.domain.entities.Question
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.random.Random

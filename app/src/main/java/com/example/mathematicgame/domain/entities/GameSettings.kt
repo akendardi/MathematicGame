@@ -1,4 +1,4 @@
-package com.example.mathgame.domain.entities
+package com.example.mathematicgame.domain.entities
 
 data class GameSettings (
     val maxSumValue: Int, //Максимальное значение суммы

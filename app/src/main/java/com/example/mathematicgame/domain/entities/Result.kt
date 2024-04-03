@@ -1,4 +1,4 @@
-package com.example.mathgame.domain.entities
+package com.example.mathematicgame.domain.entities
 
 data class Result(
     val winner: Boolean, //Победили мы или нет

@@ -1,4 +1,4 @@
-package com.example.mathgame.domain.entities
+package com.example.mathematicgame.domain.entities
 
 data class Question(
     val sum: Int,//Значения суммы

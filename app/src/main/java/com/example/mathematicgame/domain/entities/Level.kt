@@ -1,4 +1,4 @@
-package com.example.mathgame.domain.entities
+package com.example.mathematicgame.domain.entities
 
 enum class Level {
     TEST, EASY, MEDIUM, HARD

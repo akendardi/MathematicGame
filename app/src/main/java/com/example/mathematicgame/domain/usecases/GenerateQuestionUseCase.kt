@@ -1,7 +1,7 @@
-package com.example.mathgame.domain.usecases
+package com.example.mathematicgame.domain.usecases
 
 import com.example.mathematicgame.domain.repository.GameRepository
-import com.example.mathgame.domain.entities.Question
+import com.example.mathematicgame.domain.entities.Question
 
 //Юзкейс для создания вопроса, в контрукторе репозиторий, invoke позволяет вызывать функцию без создания
 //еще одной функции
