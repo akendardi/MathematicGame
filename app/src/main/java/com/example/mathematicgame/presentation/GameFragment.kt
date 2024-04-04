@@ -1,19 +1,19 @@
 package com.example.mathematicgame.presentation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.mathematicgame.R
-import com.example.mathematicgame.databinding.FragmentChooseLevelBinding
+import androidx.fragment.app.Fragment
 import com.example.mathematicgame.databinding.FragmentGameBinding
-import com.example.mathematicgame.databinding.FragmentGameFinishedBinding
+import com.example.mathematicgame.domain.entities.Level
 
 class GameFragment : Fragment() {
     private var _binding: FragmentGameBinding? = null
     private val binding: FragmentGameBinding
-        get() = _binding?:throw  RuntimeException("_binding = null")
+        get() = _binding ?: throw RuntimeException("_binding = null")
+
+    private lateinit var level: Level
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,12 +34,20 @@ class GameFragment : Fragment() {
         _binding = null
     }
 
+    private fun parseArguments(){
+        level = requireArguments().getSerializable(KEY_LEVEL) as Level
+    }
+
     companion object {
+        private const val KEY_LEVEL = "level"
+
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            GameFragment().apply {
+        fun newInstance(level: Level): GameFragment {
+            return GameFragment().apply {
                 arguments = Bundle().apply {
+                    putSerializable(KEY_LEVEL, level)
                 }
             }
+        }
     }
 }

@@ -32,7 +32,17 @@ class WelcomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.buttonWelcome.setOnClickListener {
+            launchNextScreen()
+        }
 
+    }
+
+    private fun launchNextScreen(){
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container_main, ChooseLevelFragment.newInstance())
+            .addToBackStack(null)
+            .commit()
     }
 
     override fun onDestroyView() {
@@ -40,13 +50,4 @@ class WelcomeFragment : Fragment() {
         _binding = null
     }
 
-    companion object {
-
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            WelcomeFragment().apply {
-                arguments = Bundle().apply {
-                }
-            }
-    }
 }

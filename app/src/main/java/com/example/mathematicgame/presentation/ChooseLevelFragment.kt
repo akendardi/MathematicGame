@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.mathematicgame.R
 import com.example.mathematicgame.databinding.FragmentChooseLevelBinding
+import com.example.mathematicgame.domain.entities.Level
 
 class ChooseLevelFragment : Fragment() {
     private var _binding: FragmentChooseLevelBinding? = null
@@ -27,17 +28,43 @@ class ChooseLevelFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        buttonListeners()
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
+    private fun buttonListeners(){
+        binding.buttonChooseTest.setOnClickListener {
+            launchFragment(Level.TEST)
+        }
+        binding.buttonChooseEasy.setOnClickListener {
+            launchFragment(Level.EASY)
+        }
+        binding.buttonChooseMedium.setOnClickListener {
+            launchFragment(Level.MEDIUM)
+        }
+        binding.buttonChooseHard.setOnClickListener {
+            launchFragment(Level.HARD)
+        }
+    }
+
+    private fun launchFragment(level: Level){
+        val fragment = GameFragment.newInstance(level)
+        requireActivity().supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container_main, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
     companion object {
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ChooseLevelFragment().apply {
-                arguments = Bundle().apply {
-                }
-            }
+        fun newInstance() =
+            ChooseLevelFragment()
     }
 }
