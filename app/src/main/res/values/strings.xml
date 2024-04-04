@@ -14,4 +14,13 @@
     <string name="medium">Средний</string>
     <string name="easy">Легкий</string>
     <string name="test">Тестовый</string>
+    <string name="game_over">Game Over</string>
+    <string name="score_answers">Ваш счет: %s</string>
+    <string name="score_percentage">Процент правильных ответов: %s</string>
+    <string name="retry">Попробовать снова</string>
+    <string name="right_answers">Правильных ответов %s из %s необходимых</string>
+    <string name="required_percentage">Необходимый процент правильных ответов: %s</string>
+    <string name="required_score">Необходимое количество правильных ответов: %s</string>
+    <string name="progress_answers">Правильных ответов %s (минимум %s)</string>
+    <string name="question_sign">\?</string>
 </resources>
