@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">MathematicGame</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="structure_count">Состав числа</string>
+    <string name="rules">Правила игры: перед вами будет три фигуры. Одна сверху,а две другие снизу.
+    Из предложенных снизу ответов вам нужно выбрать число так, чтобы сумма чисел в двух нижних
+    фигурах равнялась числу в верхней фигуре</string>
+    <string name="example">Пример: в верхней фигуре число 7, в нижней число 5. Из ответов вам
+        необходимо выбрать число 2.</string>
+    <string name="ok">Понятно</string>
+    <string name="choose_level">Выберите уровень:</string>
+    <string name="hard">Сложный</string>
+    <string name="medium">Средний</string>
+    <string name="easy">Легкий</string>
+    <string name="test">Тестовый</string>
+    <string name="game_over">Game Over</string>
+    <string name="score_answers">Ваш счет: %s</string>
+    <string name="score_percentage">Процент правильных ответов: %s</string>
+    <string name="retry">Попробовать снова</string>
+    <string name="right_answers">Правильных ответов %s из %s необходимых</string>
+    <string name="required_percentage">Необходимый процент правильных ответов: %s</string>
+    <string name="required_score">Необходимое количество правильных ответов: %s</string>
+    <string name="progress_answers">Правильных ответов %s (минимум %s)</string>
+    <string name="question_sign">\?</string>
 </resources>
