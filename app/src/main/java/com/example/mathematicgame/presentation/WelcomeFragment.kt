@@ -12,14 +12,7 @@ import com.example.mathematicgame.databinding.FragmentWelcomeBinding
 class WelcomeFragment : Fragment() {
     private var _binding: FragmentWelcomeBinding? = null
     private val binding: FragmentWelcomeBinding
-        get() = _binding?:throw  RuntimeException("_binding = null")
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
-    }
+        get() = _binding ?: throw RuntimeException("FragmentWelcomeBinding == null")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,12 +20,20 @@ class WelcomeFragment : Fragment() {
     ): View {
         _binding = FragmentWelcomeBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.buttonWelcome.setOnClickListener {
+            launchChooseLevelFragment()
+        }
+    }
 
+    private fun launchChooseLevelFragment() {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container_main, ChooseLevelFragment.newInstance())
+            .addToBackStack(ChooseLevelFragment.NAME)
+            .commit()
     }
 
     override fun onDestroyView() {
@@ -40,13 +41,4 @@ class WelcomeFragment : Fragment() {
         _binding = null
     }
 
-    companion object {
-
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            WelcomeFragment().apply {
-                arguments = Bundle().apply {
-                }
-            }
-    }
 }

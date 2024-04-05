@@ -1,24 +1,26 @@
 package com.example.mathematicgame.presentation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.mathematicgame.R
-import com.example.mathematicgame.databinding.FragmentChooseLevelBinding
 import com.example.mathematicgame.databinding.FragmentGameBinding
-import com.example.mathematicgame.databinding.FragmentGameFinishedBinding
+import com.example.mathematicgame.domain.entities.GameSettings
+import com.example.mathematicgame.domain.entities.Level
+import com.example.mathematicgame.domain.entities.Result
 
 class GameFragment : Fragment() {
+    private lateinit var level: Level
+
     private var _binding: FragmentGameBinding? = null
     private val binding: FragmentGameBinding
-        get() = _binding?:throw  RuntimeException("_binding = null")
+        get() = _binding ?: throw RuntimeException("FragmentGameBinding == null")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-        }
+        parseArgs()
     }
 
     override fun onCreateView(
@@ -29,17 +31,47 @@ class GameFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.tvOption1.setOnClickListener {
+            launchGameFinishedFragment(
+                Result(
+                    true,
+                    0,
+                    0,
+                    GameSettings(0, 0, 0, 0)
+                )
+            )
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
+    private fun parseArgs() {
+        level = requireArguments().getSerializable(KEY_LEVEL) as Level
+    }
+
+    private fun launchGameFinishedFragment(gameResult: Result) {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container_main, GameFinishedFragment.newInstance(gameResult))
+            .addToBackStack(null)
+            .commit()
+    }
+
     companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            GameFragment().apply {
+
+        const val NAME = "GameFragment"
+        private const val KEY_LEVEL = "level"
+
+        fun newInstance(level: Level): GameFragment {
+            return GameFragment().apply {
                 arguments = Bundle().apply {
+                    putSerializable(KEY_LEVEL, level)
                 }
             }
+        }
     }
 }

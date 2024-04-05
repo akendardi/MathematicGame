@@ -15,7 +15,7 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/button_choose_test"
+        android:id="@+id/buttonLevelTest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -26,7 +26,7 @@
         android:textSize="16sp" />
 
     <Button
-        android:id="@+id/button_choose_easy"
+        android:id="@+id/buttonLevelEasy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -37,7 +37,7 @@
         android:textSize="16sp" />
 
     <Button
-        android:id="@+id/button_choose_medium"
+        android:id="@+id/buttonLevelNormal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -48,7 +48,7 @@
         android:textSize="16sp" />
 
     <Button
-        android:id="@+id/button_choose_hard"
+        android:id="@+id/buttonLevelHard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
