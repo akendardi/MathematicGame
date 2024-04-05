@@ -1,25 +1,25 @@
 package com.example.mathematicgame.presentation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.mathematicgame.R
-import com.example.mathematicgame.databinding.FragmentChooseLevelBinding
+import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.example.mathematicgame.databinding.FragmentGameFinishedBinding
 import com.example.mathematicgame.domain.entities.Result
 
 class GameFinishedFragment : Fragment() {
+    private lateinit var gameResult: Result
+
     private var _binding: FragmentGameFinishedBinding? = null
     private val binding: FragmentGameFinishedBinding
-        get() = _binding?:throw  RuntimeException("_binding = null")
-
-    private lateinit var result: Result
+        get() = _binding ?: throw RuntimeException("FragmentGameFinishedBinding == null")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        parseArguments()
+        parseArgs()
     }
 
     override fun onCreateView(
@@ -30,23 +30,42 @@ class GameFinishedFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                retryGame()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
-    private fun parseArguments(){
-        result = requireArguments().getSerializable(KEY_RESULT) as Result
+    private fun parseArgs() {
+        gameResult = requireArguments().getSerializable(KEY_GAME_RESULT) as Result
+    }
+
+    private fun retryGame() {
+        requireActivity().supportFragmentManager.popBackStack(
+            GameFragment.NAME,
+            FragmentManager.POP_BACK_STACK_INCLUSIVE
+        )
     }
 
     companion object {
-        private const val KEY_RESULT = "result"
-        @JvmStatic
-        fun newInstance(gameResult: Result) =
-            GameFinishedFragment().apply {
+
+        private const val KEY_GAME_RESULT = "game_result"
+
+        fun newInstance(gameResult: Result): GameFinishedFragment {
+            return GameFinishedFragment().apply {
                 arguments = Bundle().apply {
-                    putSerializable(KEY_RESULT, gameResult)
+                    putSerializable(KEY_GAME_RESULT, gameResult)
                 }
             }
+        }
     }
 }
