@@ -91,7 +91,7 @@ class GameFragment : Fragment() {
             binding.progressBar.secondaryProgress = it
         }
         viewModel.percentOfRightAnswers.observe(viewLifecycleOwner){
-            binding.progressBar.progress = it
+            binding.progressBar.setProgress(it, true)
         }
         viewModel.enoughPercentOfRightAnswers.observe(viewLifecycleOwner){
             val color = if (it){
