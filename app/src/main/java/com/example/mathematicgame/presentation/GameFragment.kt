@@ -17,10 +17,17 @@ import com.example.mathematicgame.domain.entities.Result
 
 class GameFragment : Fragment() {
 
+    private val viewModelFactory by lazy {
+        GameViewModelFactory(
+            requireActivity().application,
+            level
+        )
+    }
+
     private val viewModel by lazy {
         ViewModelProvider(
             this,
-            ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
+            viewModelFactory
         )[GameViewModel::class.java]
     }
     private lateinit var level: Level
@@ -44,7 +51,6 @@ class GameFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.startGame(level)
         observers()
         listenersForButtons()
     }

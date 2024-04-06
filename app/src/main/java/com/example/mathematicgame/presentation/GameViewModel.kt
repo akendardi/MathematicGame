@@ -15,18 +15,20 @@ import com.example.mathematicgame.domain.entities.Result
 import com.example.mathematicgame.domain.usecases.GenerateQuestionUseCase
 import com.example.mathematicgame.domain.usecases.GetGameSettingsUseCase
 
-class GameViewModel(application: Application) : AndroidViewModel(application) {
+class GameViewModel(
+    private val application: Application,
+    private val level: Level
+) : ViewModel() {
     private val repository = GameRepositoryImpl
     private val generateQuestionUseCase = GenerateQuestionUseCase(repository)
     private val getGameSettingsUseCase = GetGameSettingsUseCase(repository)
-    private val context = application
 
     private var countOfRightAnswers = 0
     private var countOfQuestions = 0
 
 
     private lateinit var gameSettings: GameSettings
-    private lateinit var level: Level
+
 
     private var timer: CountDownTimer? = null
 
@@ -63,16 +65,19 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     val gameResult: LiveData<Result>
         get() = _gameResult
 
-    fun startGame(level: Level) {
-        getGameSettings(level)
+    init {
+        startGame()
+    }
+
+    private  fun startGame() {
+        getGameSettings()
         startTimer()
         generateQuestion()
         updateProgress()
 
     }
 
-    private fun getGameSettings(level: Level) {
-        this.level = level
+    private fun getGameSettings() {
         gameSettings = getGameSettingsUseCase(level)
         _minPercent.value = gameSettings.minPercentOfRightAnswers
     }
@@ -87,7 +92,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         val percent = calculatePercentOfRightAnswers()
         _percentOfRightAnswers.value = percent
         _progressAnswers.value = String.format(
-            context.resources.getString(R.string.progress_answers),
+            application.resources.getString(R.string.progress_answers),
             countOfRightAnswers,
             gameSettings.minCountOfRightAnswers
         )
