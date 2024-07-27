@@ -1,61 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    tools:context=".presentation.ChooseLevelFragment">
+<layout>
 
-    <TextView
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:text="@string/choose_level"
-        android:textSize="25sp"
-        android:textStyle="bold" />
+        android:orientation="vertical"
+        tools:context=".presentation.ChooseLevelFragment">
 
-    <Button
-        android:id="@+id/buttonLevelTest"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp"
-        android:backgroundTint="@android:color/holo_blue_light"
-        android:layout_marginBottom="12dp"
-        android:text="@string/test"
-        android:textSize="16sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:text="@string/choose_level"
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/buttonLevelEasy"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="12dp"
-        android:backgroundTint="@android:color/holo_green_dark"
-        android:text="@string/easy"
-        android:textSize="16sp" />
+        <Button
+            android:id="@+id/buttonLevelTest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@android:color/holo_blue_light"
+            android:text="@string/test"
+            android:textSize="16sp" />
 
-    <Button
-        android:id="@+id/buttonLevelNormal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="12dp"
-        android:backgroundTint="@android:color/holo_orange_dark"
-        android:text="@string/medium"
-        android:textSize="16sp" />
+        <Button
+            android:id="@+id/buttonLevelEasy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="@string/easy"
+            android:textSize="16sp" />
 
-    <Button
-        android:id="@+id/buttonLevelHard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp"
-        android:backgroundTint="@android:color/holo_red_dark"
-        android:text="@string/hard"
-        android:textSize="16sp" />
+        <Button
+            android:id="@+id/buttonLevelNormal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:text="@string/medium"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/buttonLevelHard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="@string/hard"
+            android:textSize="16sp" />
 
 
-</LinearLayout>
+    </LinearLayout>
+</layout>
